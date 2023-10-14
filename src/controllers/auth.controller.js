@@ -44,7 +44,9 @@ export const register = async (req, res) => {
       username: userSaved.username,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
@@ -69,7 +71,6 @@ export const login = async (req, res) => {
       id: userFound._id,
       fullname: userFound.fullname,
     });
-
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
@@ -107,7 +108,7 @@ export const verifyToken = async (req, res) => {
 export const logout = async (req, res) => {
   res.cookie("token", "", {
     httpOnly: true,
-    secure: true,
+    secure: false,
     expires: new Date(0),
   });
   return res.sendStatus(200);
