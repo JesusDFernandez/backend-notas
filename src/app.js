@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import taksRoutes from "./routes/tasks.routes.js";
+import userRoutes from "./routes/user.routes.js";
 import categoriesRoutes from "./routes/category.routes.js";
 import { FRONTEND_URL } from "./config.js";
 
@@ -17,5 +18,6 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api", taksRoutes);
 app.use("/api", categoriesRoutes);
+app.use("/api", userRoutes);
 
 export default app;
